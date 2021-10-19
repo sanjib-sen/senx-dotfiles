@@ -20,6 +20,7 @@ dhcpcd
 dialog
 dmidecode
 dosfstools
+dunst
 efibootmgr
 exfat-utils
 fakeroot
@@ -30,8 +31,6 @@ fuseiso
 gcc
 ghostscript
 git
-github-cli
-gnome-terminal
 gptfdisk
 groff
 grsync
@@ -74,6 +73,7 @@ simplescreenrecorder
 sudo
 texinfo
 thunar
+tlp-rdw
 traceroute
 ttf-bitstream-vera
 ttf-dejavu
@@ -87,6 +87,8 @@ which
 xclip
 xdg-user-dirs
 xf86-input-synaptics
+xfce4-power-manager
+xfce4-terminal
 xorg-fonts-type1
 xorg-server
 xorg-xinit
