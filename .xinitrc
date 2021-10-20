@@ -62,5 +62,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
 ...
-
+export GTK_IM_MODULE=xim #Fix for Chrome
+export QT_IM_MODULE=xim #Not sure if this works or not, but whatever
+export XMODIFIERS=@im=ibus
+ibus-daemon -drx
 exec dbus-launch dwm

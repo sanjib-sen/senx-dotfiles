@@ -155,7 +155,7 @@ bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+c kill
 
 # exit-menu
-bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
+bindsym $mod+Shift+e exec ~/.config/rofi/scripts/powermenu
 
 # Lock the system
 # lock with a picture:
@@ -267,8 +267,8 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 bindsym $mod+Shift+w exec --no-startup-id /home/sanjib/.config/rofi/scripts/browser/nwindow
 bindsym $mod+w exec --no-startup-id /home/sanjib/.config/rofi/scripts/browser/swindow
 
-bindsym $mod+Shift+s exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Google" | xargs -I{} google-chrome-stable --new-window https://www.google.de/search?q={}
-bindsym $mod+s exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Google" | xargs -I{} google-chrome-stable https://www.google.de/search?q={}
+bindsym $mod+Shift+g exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Google" | xargs -I{} google-chrome-stable --new-window https://www.google.de/search?q={}
+bindsym $mod+g exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Google" | xargs -I{} google-chrome-stable https://www.google.de/search?q={}
 
 bindsym $mod+y exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Youtube" | xargs -I{} google-chrome-stable https://www.youtube.com/results?search_query={}
 bindsym $mod+Shift+y exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Youtube" | xargs -I{} google-chrome-stable https://www.youtube.com/results?search_query={}
