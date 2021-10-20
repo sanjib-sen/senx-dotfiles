@@ -214,10 +214,10 @@ bindsym $mod+f fullscreen toggle
 # bindsym $mod+w layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -336,7 +336,11 @@ exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
+#polybar
 exec --no-startup-id ~/.config/polybar/launch.sh --forest
+
+#ibus-openbangla
+exec --no-startup-id ibus-daemon
 
 # start blueberry app for managing bluetooth devices from tray:
 exec --no-startup-id blueberry-tray
@@ -372,6 +376,7 @@ for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 #set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
 for_window [class="xfce4-power-manager"] floating enable
+
 
 
 ######################################
