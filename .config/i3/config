@@ -271,7 +271,7 @@ bindsym $mod+Shift+g exec --no-startup-id echo "" | rofi -dmenu -theme "~/.confi
 bindsym $mod+g exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Google" | xargs -I{} google-chrome-stable https://www.google.de/search?q={}
 
 bindsym $mod+y exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Youtube" | xargs -I{} google-chrome-stable https://www.youtube.com/results?search_query={}
-bindsym $mod+Shift+y exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Youtube" | xargs -I{} google-chrome-stable https://www.youtube.com/results?search_query={}
+bindsym $mod+Shift+y exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Youtube" | xargs -I{} google-chrome-stable --new-window https://www.youtube.com/results?search_query={}
 
 ##########################################
 # Apps #
@@ -420,7 +420,7 @@ bindsym $mod+d exec rofi -modi drun -show drun \
 		
 ## rofi bindings for window menu (two bindings F10/$mod+t)
 
-bindsym $mod+q exec rofi -show window \
+bindsym $mod+Tab exec rofi -show window \
 		-config ~/.config/rofi/themes/rofidmenu.rasi 
 
 #bindsym F10 exec rofi -show window \

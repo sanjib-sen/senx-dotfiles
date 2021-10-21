@@ -66,4 +66,5 @@ export GTK_IM_MODULE=xim #Fix for Chrome
 export QT_IM_MODULE=xim #Not sure if this works or not, but whatever
 export XMODIFIERS=@im=ibus
 ibus-daemon -drx
+exec ibux-daemon -drx
 exec dbus-launch dwm
