@@ -13,7 +13,8 @@ configuration {
     sidebar-mode:			false;
 }
 
-@import "./arc_dark_transparent_colors.rasi"
+@import "~/.cache/wal/colors-rofi-dark"
+
 
 window {
     background-color: @background;

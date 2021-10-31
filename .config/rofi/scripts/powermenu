@@ -115,7 +115,7 @@ menu=(
   [ Shutdown]="systemctl poweroff"
   [ Reboot]="systemctl reboot"
   [ Suspend]="systemctl suspend"
-  [ Lock]="betterlockscreen --lock blur"
+  [ Lock]="betterlockscreen --lock dim"
   [ Logout]="i3-msg exit"
   [ Cancel]=""
 )

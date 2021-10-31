@@ -40,8 +40,6 @@ new_window pixel 1
 gaps inner 6
 gaps outer 3
 
-
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -57,31 +55,6 @@ bindsym $mod+8    workspace  $ws8
 bindsym $mod+9    workspace  $ws9
 bindsym $mod+0    workspace  $ws10
 
-# switch to workspace with numpad keys
-bindcode $mod+87 workspace 1
-bindcode $mod+88 workspace 2
-bindcode $mod+89 workspace 3
-bindcode $mod+83 workspace 4
-bindcode $mod+84 workspace 5
-bindcode $mod+85 workspace 6
-bindcode $mod+79 workspace 7
-bindcode $mod+80 workspace 8
-bindcode $mod+81 workspace 9
-bindcode $mod+90 workspace 10
-
-# switch to workspace with numlock numpad keys
-bindcode $mod+Mod2+87 workspace $ws1
-bindcode $mod+Mod2+88 workspace $ws2
-bindcode $mod+Mod2+89 workspace $ws3
-bindcode $mod+Mod2+83 workspace $ws4
-bindcode $mod+Mod2+84 workspace $ws5
-bindcode $mod+Mod2+85 workspace $ws6
-bindcode $mod+Mod2+79 workspace $ws7
-bindcode $mod+Mod2+80 workspace $ws8
-bindcode $mod+Mod2+81 workspace $ws9
-bindcode $mod+Mod2+90 workspace $ws10
-
-
 # move focused container to workspace
 bindsym $mod+Shift+1    move container to workspace  $ws1
 bindsym $mod+Shift+2    move container to workspace  $ws2
@@ -95,29 +68,6 @@ bindsym $mod+Shift+9    move container to workspace  $ws9
 bindsym $mod+Shift+0    move container to workspace  $ws10
 
 
-# move focused container to workspace with numpad keys
-bindcode $mod+Shift+Mod2+87 	move container to workspace  $ws1
-bindcode $mod+Shift+Mod2+88 	move container to workspace  $ws2
-bindcode $mod+Shift+Mod2+89 	move container to workspace  $ws3
-bindcode $mod+Shift+Mod2+83 	move container to workspace  $ws4
-bindcode $mod+Shift+Mod2+84 	move container to workspace  $ws5
-bindcode $mod+Shift+Mod2+85 	move container to workspace  $ws6
-bindcode $mod+Shift+Mod2+79 	move container to workspace  $ws7
-bindcode $mod+Shift+Mod2+80 	move container to workspace  $ws8
-bindcode $mod+Shift+Mod2+81 	move container to workspace  $ws9
-bindcode $mod+Shift+Mod2+90 	move container to workspace  $ws10
-
-# move focused container to workspace with numpad keys
-bindcode $mod+Shift+87 	 move container to workspace  $ws1
-bindcode $mod+Shift+88 	 move container to workspace  $ws2
-bindcode $mod+Shift+89 	 move container to workspace  $ws3
-bindcode $mod+Shift+83 	 move container to workspace  $ws4
-bindcode $mod+Shift+84 	 move container to workspace  $ws5
-bindcode $mod+Shift+85 	 move container to workspace  $ws6
-bindcode $mod+Shift+79 	 move container to workspace  $ws7
-bindcode $mod+Shift+80 	 move container to workspace  $ws8
-bindcode $mod+Shift+81 	 move container to workspace  $ws9
-bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -159,7 +109,7 @@ bindsym $mod+Shift+e exec ~/.config/rofi/scripts/powermenu
 
 # Lock the system
 # lock with a picture:
-bindsym $mod+l exec betterlockscreen --lock blur
+bindsym $mod+l exec betterlockscreen --lock dim
 # lock by blurring the screen:
 #bindsym $mod+l exec ~/.config/i3/scripts/blur-lock.sh
 
@@ -176,24 +126,13 @@ bindsym XF86MonBrightnessUp exec xbacklight +10
 bindsym XF86MonBrightnessDown exec xbacklight -10
 
 # change focus
-# bindsym $mod+j focus left
-# bindsym $mod+k focus down
-# bindsym $mod+b focus up
-# bindsym $mod+o focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-# bindsym $mod+Shift+j move left
-# bindsym $mod+Shift+k move down
-# bindsym $mod+Shift+b move up
-# bindsym $mod+Shift+o move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -226,29 +165,28 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
 
 ## Multimedia Keys
-
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+# bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks && dunstify -h string:x-dunst-stack-tag:volume Volume: $(amixer --get-volume)%
+# bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+# # mute
+# bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
 
-
-# Pulse Audio controls
+#Pulse Audio controls
 
 #volume up
-#bindsym XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost && dunstify -h string:x-dunst-stack-tag:volume volume: $(pamixer --get-volume)%
+bindsym XF86AudioRaiseVolume exec pamixer -i 5 && dunstify -h string:x-dunst-stack-tag:volume Volume: $(pamixer --get-volume)%
 #volume down
-#bindsym XF86AudioLowerVolume exec pamixer -d 5 --allow-boost && dunstify -h string:x-dunst-stack-tag:volume volume: $(pamixer --get-volume)%
+bindsym XF86AudioLowerVolume exec pamixer -d 5 && dunstify -h string:x-dunst-stack-tag:volume Volume: $(pamixer --get-volume)%
 #mute
-#bindsym XF86AudioMute exec pamixer -t && dunstify -h string:x-dunst-stack-tag:mute mute: $(pamixer --get-mute)!
+bindsym XF86AudioMute exec pamixer -t && dunstify -h string:x-dunst-stack-tag:mute mute: $(pamixer --get-mute)!
 
 # gradular volume control
-bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+#bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+#bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
 
-# mute
-#bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
+
 #mute
-bindsym XF86AudioMute exec pamixer -t && notify-send "mute: $(pamixer --get-mute)"
+#bindsym XF86AudioMute exec pamixer -t && notify-send "mute: $(pamixer --get-mute)"
 
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -258,14 +196,11 @@ bindsym XF86AudioPrev exec playerctl previous
 # Redirect sound to headphones
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
-
-
-
 ##########################################
 # Browser #
 ##########################################
-bindsym $mod+Shift+w exec --no-startup-id /home/sanjib/.config/rofi/scripts/browser/nwindow
-bindsym $mod+w exec --no-startup-id /home/sanjib/.config/rofi/scripts/browser/swindow
+bindsym $mod+Shift+w exec --no-startup-id /home/sanjib/.config/rofi/scripts/browser/new
+bindsym $mod+w exec --no-startup-id /home/sanjib/.config/rofi/scripts/browser/same
 
 bindsym $mod+Shift+g exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Google" | xargs -I{} google-chrome-stable --new-window https://www.google.de/search?q={}
 bindsym $mod+g exec --no-startup-id echo "" | rofi -dmenu -theme "~/.config/rofi/themes/search.rasi" -p "Google" | xargs -I{} google-chrome-stable https://www.google.de/search?q={}
@@ -317,65 +252,57 @@ bindsym $mod+e exec --no-startup-id rofimoji
 #############################################
 # autostart applications/services on login: #
 #############################################
-#get auth work with polkit-gnome
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-# dex execute .desktop files
-# keep in mind that it can cause issues 
-# when second to i3 a DE is installed or mixed usage of i3 + xfce4 or GNOME
-# in this cases better disable dex and use manual starting apps using xdg/autostart
-exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
+#picom
+exec --no-startup-id picom -b --experimental-backends
 
-# num lock activated
-#exec --no-startup-id numlockx on
-
-# start conky: 
-#exec_always --no-startup-id conky
-
-# start a script to setup displays
-# uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id ~/.screenlayout/monitor.sh
-
-#polybar
+# polybar
 exec --no-startup-id ~/.config/polybar/launch.sh --forest
 
-#ibus-openbangla
-exec --no-startup-id ibus-daemon
-
-# start blueberry app for managing bluetooth devices from tray:
-exec --no-startup-id blueberry-tray
-
-#transparency 
-#exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
-#exec --no-startup-id picom -CGb
-
-#networkmanager-applet
-exec --no-startup-id nm-applet
-
-# set wallpaper
-exec --no-startup-id nitrogen --restore
-#exec --no-startup-id feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros_i3.png
+# ibus-openbangla
+exec --no-startup-id ibus-daemon -drx
+exec ibux-daemon -drx
 
 #set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
+#exec --no-startup-id xss-lock -- i3lock -n -i background_image.png 
 
 # Desktop notifications
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
-# Autostart apps as you like
-#exec --no-startup-id sleep 2 && xfce4-terminal
-#exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
-#exec --no-startup-id sleep 3 && thunar
-exec --no-startup-id sleep 3 && xfce4-power-manager
 
-# set floating (nontiling)for apps needing it
-for_window [class="Yad" instance="yad"] floating enable
-for_window [class="Galculator" instance="galculator"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
-
-#set floating (nontiling) for special apps
-for_window [class="Xsane" instance="xsane"] floating enable
-for_window [class="xfce4-power-manager"] floating enable
+# start blueberry app for managing bluetooth devices from tray:
+# exec --no-startup-id blueberry-tray
+# get auth work with polkit-gnome
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# dex execute .desktop files
+# keep in mind that it can cause issues 
+# when second to i3 a DE is installed or mixed usage of i3 + xfce4 or GNOME
+# in this cases better disable dex and use manual starting apps using xdg/autostart
+# exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
+# num lock activated
+# exec --no-startup-id numlockx on
+# start conky: 
+# exec_always --no-startup-id conky
+# start a script to setup displays
+# uncomment the next line, use arandr to setup displays and save the file as monitor:
+# exec --no-startup-id ~/.screenlayout/monitor.sh
+# networkmanager-applet
+# exec --no-startup-id nm-applet
+# set wallpaper
+# exec --no-startup-id nitrogen --restore
+# exec --no-startup-id feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros_i3.png
+# Double-Hash = comment, Single-Hash = command 
+## Autostart apps as you like
+# exec --no-startup-id sleep 2 && xfce4-terminal
+# exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
+## set floating (nontiling)for apps needing it
+#for_window [class="Yad" instance="yad"] floating enable
+#for_window [class="Galculator" instance="galculator"] floating enable
+#for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+##set floating (nontiling) for special apps
+#for_window [class="Xsane" instance="xsane"] floating enable
+#for_window [class="xfce4-power-manager"] floating enable
 
 
 
@@ -384,25 +311,36 @@ for_window [class="xfce4-power-manager"] floating enable
 ######################################
  
 # Define colors variables: 
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
+# set $darkbluetrans	#08052be6
+# set $darkblue		#08052b
+# set $lightblue		#5294e2
+# set $urgentred		#e53935
+# set $white		#ffffff
+# set $black		#000000
+# set $purple		#e345ff
+# set $darkgrey		#383c4a
+# set $grey		#b0b5bd
+# set $mediumgrey		#8b8b8b
+# set $yellowbrown	#e1b700
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$purple		$mediumgrey
-client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
-client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
-client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
+# client.focused		    $lightblue	$darkblue	$white		$purple		$mediumgrey
+# client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
+# client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
+# client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 
 
@@ -415,13 +353,9 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/themes/rofidmenu.rasi
 
-#bindsym F9 exec rofi -modi drun -show drun \
-#		-config ~/.config/rofi/rofidmenu.rasi
-		
-## rofi bindings for window menu (two bindings F10/$mod+t)
-
 bindsym $mod+Tab exec rofi -show window \
 		-config ~/.config/rofi/themes/rofidmenu.rasi 
 
-#bindsym F10 exec rofi -show window \
-#		-config ~/.config/rofi/rofidmenu.rasi
+
+# PROTIP: You can also dynamically set dmenu's colors this way:
+# bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"

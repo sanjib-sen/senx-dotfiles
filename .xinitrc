@@ -65,6 +65,7 @@ export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 export GTK_IM_MODULE=xim #Fix for Chrome
 export QT_IM_MODULE=xim #Not sure if this works or not, but whatever
 export XMODIFIERS=@im=ibus
-ibus-daemon -drx
-exec ibux-daemon -drx
+
 exec dbus-launch dwm
+
+wal -R
