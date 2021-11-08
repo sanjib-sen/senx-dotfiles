@@ -216,8 +216,8 @@ bindsym $mod+n exec /usr/bin/thunar
 ##########################################
 # Taking Screenshot #
 ##########################################
-bindsym --release Print exec "scrot ~/Pictures/Screenshots/%Y-%m-%d-%T.png -e 'xclip -selection clipboard -t image/png -i $f'"
-bindsym --release $mod+Shift+s exec "scrot -s ~/Pictures/Screenshots/%Y-%m-%d-%T.png -e 'xclip -selection clipboard -t image/png -i $f'"
+bindsym --release Print exec "flameshot full -c -p ~/Pictures/Screenshots"
+bindsym --release $mod+Shift+s exec "flameshot gui -p ~/Pictures/Screenshots"
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -252,6 +252,9 @@ bindsym $mod+e exec --no-startup-id rofimoji
 #############################################
 # autostart applications/services on login: #
 #############################################
+
+#wallpaper
+exec shuf -ezn 1 ~/wallpapers/* | xargs -0 -n1 wal -i
 
 #picom
 exec --no-startup-id picom -b --experimental-backends

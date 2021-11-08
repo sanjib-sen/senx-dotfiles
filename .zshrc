@@ -102,6 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias neofetch="neofetch --source .config/neofetch/ascii.txt"
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+
+
 eval "$(starship init zsh)"
 
 # Import colorscheme from 'wal' asynchronously
